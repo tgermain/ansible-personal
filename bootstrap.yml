@@ -1,0 +1,7 @@
+- hosts: servers
+  connection: local
+  vars:
+      - host_type: "term" # set it to gui to install gui-related stuffs
+  roles:
+      - common
+

@@ -1,0 +1,39 @@
+- name: Install useful packages
+  sudo: yes
+  ignore_errors: yes
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+      - tree
+      - htop
+      - glances
+      - iftop
+      - sudo
+      - the_silver_searcher
+      - silversearcher-ag
+      - ranger
+      - tmux
+      - vim
+      - net-tools
+      - git
+      - curl
+      - wget
+      - jq
+
+- name: install GUI only packages
+  when: host_type == "gui"
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - arandr
+    - evince
+    - pavucontrol
+    - redshift-gtk
+    - conky
+    - firefox
+    - thunderbird
+
+#add ssh keu for github, crypt the keys using ansible-vault
+#clone configuration rep
